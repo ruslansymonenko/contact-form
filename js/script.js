@@ -1,5 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-  
+  const userForm = document.querySelector('.user-form');
+  const userReplyFromServer = document.querySelector('.user-reply__server-data');
+
+
+  userForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    
+    userReplyFromServer.classList.add('user-reply__server-data-active');
+  })
 })
 
 

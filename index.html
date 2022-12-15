@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Contact form</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -13,14 +14,20 @@
 
   <div class="contact-form">
     <form class="user-form">
-      <input class="user-from__name" type="text" name="userName">
-      <input class="user-from__phone" type="text" type="phone" name="phone">
-      <button class="sendBtn" type="submit">Send</button>
+      <div class="user-form__container">
+        <h3 class="user-form__header">Ваше ім'я</h3>
+        <input class="user-from__item user-from__name" type="text" name="userName" placeholder="Введіть ваше ім'я">
+      </div>
+      <div class="user-form__container">
+        <h3 class="user-form__header">Ваш телефон</h3>
+        <input class="user-from__item user-from__phone" type="text" type="phone" name="phone" placeholder="Введіть ваше телефон">
+      </div>
+      <button class="sendBtn" type="submit">Відправити</button>
     </form>
   
     <div class="user-reply">
-      <h2>Введіть ваші данні до форми</h2>
-      <div class="user-reply"></div>
+      <h2 class="user-reply__header">Введіть ваші данні до форми</h2>
+      <div class="user-reply__server-data">Дякуемо</div>
     </div>
   </div>
 
