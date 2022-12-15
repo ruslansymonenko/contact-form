@@ -1,13 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
   const userForm = document.querySelector('.user-form');
   const userReplyFromServer = document.querySelector('.user-reply__server-data');
+  const userName = document.querySelector('.user-from__name');
+  const userPhone = document.querySelector('.user-from__phone');
 
+  const request = new XMLHttpRequest();
+
+  function getInputValue (input) {
+    if(!input) {
+      alert('Будь ласка, додайте данні до форми');
+    } else {
+      return input
+    }
+  }
 
   userForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    
-    userReplyFromServer.classList.add('user-reply__server-data-active');
+    let nameForSaving = getInputValue(userName.value);
+    let userPhoneForSaving = getInputValue(userPhone.value);
+
+    if(nameForSaving && userPhoneForSaving) {
+      console.log(nameForSaving, userPhoneForSaving);
+
+
+      userReplyFromServer.classList.add('user-reply__server-data-active');
+    }
   })
 })
 
