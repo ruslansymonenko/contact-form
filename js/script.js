@@ -14,32 +14,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function getUserData (nameInput, phoneInput) {
+    let userData = {
+      userName: nameInput.value,
+      userPhone: phoneInput.value,
+      inputDataName: nameInput.getAttribute('name'),
+      inputDataPhone: phoneInput.getAttribute('name')
+    }
+
+    return userData
+  }
+
+  function sendRequest (data) {
+    request.onreadystatechange = function () {
+      if(this.readyState == 4 && this.status == 200) {
+        getServerResponse(this.responseText);
+      }
+    }
+
+    request.open('GET', `http://contact-form.my/index2.php?${data.inputDataName}=${data.userName}&${data.inputDataPhone}=${data.userPhone}`);
+    request.send();
+  }
+
+  function getServerResponse (data) {
+    console.log(data);
+
+
+    userReplyFromServer.classList.add('user-reply__server-data-active');
+  }
+
   userForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    let nameForSaving = getInputValue(userName.value);
-    let userPhoneForSaving = getInputValue(userPhone.value);
+    let userData = getUserData(userName, userPhone);
 
-    if(nameForSaving && userPhoneForSaving) {
-      console.log(nameForSaving, userPhoneForSaving);
-
-
-      userReplyFromServer.classList.add('user-reply__server-data-active');
+    if (userData.userName && userData.userPhone) {
+      sendRequest(userData);
+    } else {
+      alert('Будь ласка, додайте данні до форми');
     }
   })
 })
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
